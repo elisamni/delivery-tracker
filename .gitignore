@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+
+.env
+google-service-account.json
+shipments.db
+
+acs_dom_dump.html
+cyprus_post_dom_dump.html
+acs_search_response_*.json
+
+*.log
