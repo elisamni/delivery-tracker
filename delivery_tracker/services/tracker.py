@@ -58,7 +58,7 @@ class TrackingService:
                 recipient_username=recipient_username,
             )
 
-    def run_once(self) -> None:
+    def run_once(self, *, send_cycle_summary: bool = True) -> None:
         with SessionLocal() as session:
             repo = ShipmentRepository(session)
             self.google_sheets.ensure_sheet_shape()
@@ -73,7 +73,8 @@ class TrackingService:
                 summary_item = self._process_shipment(repo, shipment)
                 if summary_item:
                     cycle_summary.append(summary_item)
-            self.notifier.send_cycle_summary(cycle_summary)
+            if send_cycle_summary:
+                self.notifier.send_cycle_summary(cycle_summary)
 
     def list_shipments(self) -> list[Shipment]:
         with SessionLocal() as session:

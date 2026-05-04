@@ -14,6 +14,9 @@ class Settings(BaseSettings):
     database_url: str = Field(default="sqlite:///./shipments.db", alias="DATABASE_URL")
     check_interval_minutes: int = Field(default=30, alias="CHECK_INTERVAL_MINUTES")
     tracker_batch_size: int = Field(default=100, alias="TRACKER_BATCH_SIZE")
+    daily_summary_hour: int = Field(default=8, alias="DAILY_SUMMARY_HOUR")
+    daily_summary_minute: int = Field(default=0, alias="DAILY_SUMMARY_MINUTE")
+    scheduler_timezone: str = Field(default="Europe/Lisbon", alias="SCHEDULER_TIMEZONE")
 
     google_sheets_enabled: bool = Field(default=False, alias="GOOGLE_SHEETS_ENABLED")
     google_sheets_spreadsheet_id: str = Field(default="", alias="GOOGLE_SHEETS_SPREADSHEET_ID")
